@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/defaultLayout}">
+
+<section layout:fragment="content" class="contents d-flex justify-content-center align-items-center">
+	<div class="sign-up-box">
+		<h1>회원가입</h1>
+		<form method="Post" action="" >
+			<table>
+				<tr>
+					<th>*아이디(4자 이상)</th>
+					<td class="d-flex">
+						<input type="text" name="userId" id="userId" class="form-control col-8 ml-2 mt-2 mb-2" placeholder="아이디를 입력하세요">
+						<button type="button" id="checkBTN" class="btn btn-success text-light col-3 mr-2 mt-2 mb-2">중복확인</button>
+					</td>
+				</tr>
+				<tr>
+					<th>*비밀번호</th>
+					<td>
+						<input type="password" name="password" id="password" class="form-control col-11 m-2" placeholder="비밀번호를 입력하세요">
+					</td>
+				</tr>
+				<tr>
+					<th>*비밀번호 확인</th>
+					<td>
+						<input type="text" name="phoneNumber" id="phoneNumber" class="form-control col-11 m-2" placeholder="비밀번호를 입력하세요">
+					</td>
+				</tr>
+				<tr>
+					<th>*이름</th>
+					<td>
+						<input type="text" name="name" id="name" class="form-control col-11 m-2" placeholder="이름을 입력하세요">
+					</td>
+				</tr>
+				<tr>
+					<th>*이메일</th>
+					<td>
+						<input type="text" name="email" id="email" class="form-control col-11 m-2" placeholder="이메일 주소를 입력하세요">
+					</td>
+				</tr>
+			</table>
+			<div class="d-flex justify-content-end">
+				<button type="submit" id="joinBTN" class="btn btn-primary text-light mt-4">회원가입</button>
+			</div>	
+		</form>
+	</div>
+</section>
+
+<th:block layout:fragment="script">
+	<script>
+ 	$(document).ready(function(){
+		$("#checkBTN").on('click', function(){
+			let userId = $("#userId").val().trim();
+			
+			$.ajax({
+				type:"Post"
+				, url:"/user/is-duplicated-id"
+				, data:{ "userId" : userId}
+				, success:function(data) {
+				// {"code":200, "result":"성공"}
+					if (data.is_duplicated_id == false) {
+						alert("중복");
+					} else {
+						alert("생성가능")
+					}
+				}
+				, error:function(e) {
+					alert("에러발생");
+				}
+			});
+		});
+	}); 
+	
+	</script>
+</th:block>
+</html>

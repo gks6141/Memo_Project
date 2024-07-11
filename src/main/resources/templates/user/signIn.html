@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html 
+      lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}">
+<section layout:fragment="content" class="contents d-flex justify-content-center align-items-center">
+	<div class="sign-in-box">
+		<h1>로그인</h1>
+		<form method="Post" action="/user/login" >
+			<input type="text" name="userId" id="userId" class="form-control mt-3" placeholder="아이디를 입력하세요">
+			<input type="text" name="password" id="password" class="form-control mt-3"  placeholder="암호를 입력하세요">
+			<div class="d-flex justify-content-end mt-3">
+				<button type="submit" id="loginBTN" class="btn btn-warning text-light w-100">로그인</button>
+			</div>
+		</form>
+		<div class="d-flex justify-content-end mt-3">
+			<button type="button" onclick="location.href='/user/sign-up-view' "  id="joinBTN" class="btn btn-primary w-100">회원가입</button>
+		</div>
+	</div>
+</section>
+
+<th:block layout:fragment="script">
+    <script>
+
+    </script>
+</th:block>
+</html>
