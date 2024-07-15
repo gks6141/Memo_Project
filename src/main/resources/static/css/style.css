@@ -1,44 +1,7 @@
 @charset "UTF-8";
-header{
-	height:100px;
-}
 
-.contents{
-	min-height: 500px;
-}
+header {height:100px;}
+.contents {min-height:500px;}
+footer {height:100px;}
 
-footer{
-	height:100px;
-}
-
-tr{
-	border: solid 1px ;
-}
-td{
-	width: 600px;
-}
-
-th{
-	width:300px;
-	border: solid 1px ;
-}
-
-#loginBTN{
-	width:200px;
-	height: 60px;
-	font-size:25px;
-	border:solid;
-	border-color: black;	
-}
-
-#joinBTN{
-	width:200px;
-	height: 60px;
-	font-size:25px;
-	border:solid;
-	border-color: black;	
-}
-
-.sign-in-box{
-	width: 40%;
-}
+.sign-up-box {width:600px;}
