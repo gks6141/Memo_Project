@@ -20,9 +20,9 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@Builder(toBuilder = true)
 @Getter
-@Table(name = "user")
+@Table(name="user")
 @Entity
 public class UserEntity {
 	@Id
@@ -37,6 +37,10 @@ public class UserEntity {
 	private String name;
 	
 	private String email;
+	
+	@Column(name = "profileImageUrl")
+	private String profileImageUrl;
+	
 	
 	@CreationTimestamp
 	@Column(name = "createdAt")

@@ -22,7 +22,41 @@
 
 <th:block layout:fragment="script">
     <script>
-
+		$(document).ready(function(){
+			$("form").on('submit', function(){
+				//e.prevenDefault();
+				//alert("로그인");
+				
+				let login = $("input[ name=userId]").val().trim();
+				let password = $("input[ name=password]").val().trim();
+				
+				if(!loginId){
+					alert("아이디를 입력하세요");
+					return false;
+				}
+				
+				if(!password){
+					alert("비밀번호를 입력하세요");
+					return false;
+				}
+				
+				let url = $(this).attr('action');
+				console.log(url);
+				let params = $(this).seralize();
+				console.log(params);
+				
+				$.post(url,params) //request
+				.done(function(data){ //response
+					if (data.result =="성공"){
+						//글 목록 화면으로 이동
+						location.href="/post/post-list-view";
+					} else {
+						alert("실패");
+					}
+				});
+				
+			});
+		});
     </script>
 </th:block>
 </html>
