@@ -86,7 +86,7 @@
 			});
 		});
 		$("#signUpForm").on('submit', function(e) {
-			//e.preventDefault(); // 서브밋 기능 중단
+			e.preventDefault(); // 서브밋 기능 중단
 			
 			//alert("회원가입");
 			// validation
@@ -135,20 +135,18 @@
 			// 2) AJAX 호출 -> response가 JSON
 			let url = $(this).attr("action");
 			console.log(url);
-			let params = $(this).serialize(); // 폼태그에 있는 name 속성과 value를 파라미터로 구성
+			let params = $(this).serialize(); //폼태그에 있는 name 속성과 value를 파라미터로 구성
 			console.log(params);
 			
-			$.post(url, params) // request
-			.done(function(data) { // response
-				if (data.code == 200) {
-					alert("가입을 환영합니다. 로그인 해주세요.");
-					// 로그인 화면 이동
+			$.post(url, params) //request
+			.done(function(data) { //response
+				if(data.code == 200){
+					alert("가입을 환영합니다.로그인해주세요");
 					location.href = "/user/sign-in-view";
 				} else {
 					alert(data.error_message);
 				}
 			});
-			
 		});
 	});
 	

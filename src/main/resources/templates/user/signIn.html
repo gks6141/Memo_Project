@@ -7,7 +7,7 @@
 <section layout:fragment="content" class="contents d-flex justify-content-center align-items-center">
 	<div class="sign-in-box">
 		<h1>로그인</h1>
-		<form method="Post" action="/user/login" >
+		<form method="Post" action="/user/sign-in" >
 			<input type="text" name="userId" id="userId" class="form-control mt-3" placeholder="아이디를 입력하세요">
 			<input type="text" name="password" id="password" class="form-control mt-3"  placeholder="암호를 입력하세요">
 			<div class="d-flex justify-content-end mt-3">
@@ -24,7 +24,7 @@
     <script>
 		$(document).ready(function(){
 			$("form").on('submit', function(){
-				//e.prevenDefault();
+				e.prevenDefault();
 				//alert("로그인");
 				
 				let login = $("input[ name=userId]").val().trim();

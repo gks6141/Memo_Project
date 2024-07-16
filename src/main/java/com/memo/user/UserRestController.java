@@ -44,13 +44,15 @@ public class UserRestController {
 		}
 		return result;
 	}
-	//회원 가입 api
-//	@param("")
-//	@param("")
-//	@param("")
-//	@param("")
-//	@param("")
 	
+	/**
+	 * 
+	 * @param loginId
+	 * @param password
+	 * @param name
+	 * @param email
+	 * @return
+	 */
 	@PostMapping("/sign-up")
 	public Map<String, Object> signUp(
 			@RequestParam("loginId") String loginId,
