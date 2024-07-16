@@ -40,6 +40,6 @@ public class UserController {
 		session.removeAttribute("userLoginId");
 		session.removeAttribute("userName");
 		//로그인 페이지로 이동
-		return "redirect://user/singIn";
+		return "redirect:/user/singIn";
 	}
 }

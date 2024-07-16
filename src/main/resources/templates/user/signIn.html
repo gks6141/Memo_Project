@@ -7,8 +7,8 @@
 <section layout:fragment="content" class="contents d-flex justify-content-center align-items-center">
 	<div class="sign-in-box">
 		<h1>로그인</h1>
-		<form method="Post" action="/user/sign-in" >
-			<input type="text" name="userId" id="userId" class="form-control mt-3" placeholder="아이디를 입력하세요">
+		<form id="loginForm" method="Post" action="/user/sign-in" >
+			<input type="text" name="loginId" id="loginId" class="form-control mt-3" placeholder="아이디를 입력하세요">
 			<input type="text" name="password" id="password" class="form-control mt-3"  placeholder="암호를 입력하세요">
 			<div class="d-flex justify-content-end mt-3">
 				<button type="submit" id="loginBTN" class="btn btn-warning text-light w-100">로그인</button>
@@ -23,12 +23,12 @@
 <th:block layout:fragment="script">
     <script>
 		$(document).ready(function(){
-			$("form").on('submit', function(){
-				e.prevenDefault();
+			$("#loginForm").on('submit', function(){
+				//e.prevenDefault();
 				//alert("로그인");
 				
-				let login = $("input[ name=userId]").val().trim();
-				let password = $("input[ name=password]").val().trim();
+				let loginId = $("#loginId").val().trim();
+				let password = $("#password").val().trim();
 				
 				if(!loginId){
 					alert("아이디를 입력하세요");
@@ -42,7 +42,7 @@
 				
 				let url = $(this).attr('action');
 				console.log(url);
-				let params = $(this).seralize();
+				let params = $(this).serialize();
 				console.log(params);
 				
 				$.post(url,params) //request
