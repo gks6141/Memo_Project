@@ -24,6 +24,13 @@ public class PostBO {
 		return postMapper.getPostListByUserId(userId);
 	}
 	
+	//input: postId, userId
+	//output: Post or null
+	
+	public Post getPostByPostIdUserId(int userid, int postId) {
+		return postMapper.selectPostByUserIdPostId(userid, postId);
+	}
+	
 	//input: 로그인된 사람의 userId
 	//output: X
 	public void addPostByUserId(int userId, String userLoginId, String subject, String content, MultipartFile file) {
