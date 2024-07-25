@@ -94,15 +94,19 @@ public class PostBO {
 		Post post = postMapper.selectPostByUserIdPostId(userId, postId);
 		
 		if(post == null) {
-			log.warn("[글 수정] post is null. userId:{}, postId:{}",userId, postId);
+			log.warn("[글 삭제] post is null. userId:{}, postId:{}",userId, postId);
 			return;
 		}
 		
-		if(post.getImagePath() != null) {
+		//post DB delete
+		int rowCount = postMapper.deletePostByPostId(userId, postId);
+		
+		
+		//이미지가 존재하면 삭제
+		if(rowCount >0 && post.getImagePath() != null) {
 			fileManagerService.deleteFile(post.getImagePath());
 		}
 		
-		postMapper.deletePostByPostId(userId, postId);
 		
 	}
 	

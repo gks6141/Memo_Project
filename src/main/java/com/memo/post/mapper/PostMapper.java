@@ -31,7 +31,7 @@ public interface PostMapper {
 			@Param("content") String content,
 			@Param("imagePath") String imagePath);
 	
-	public void deletePostByPostId(
+	public int deletePostByPostId(
 			@Param("userId") int userid,
 			@Param("postId") int postId);
 }

@@ -29,10 +29,6 @@ public class UserController {
 		return "user/signIn";
 	}
 	
-	
-	
-	
-	
 	@RequestMapping("/sign-out")
 	public String signOut(HttpSession session) {
 		//session 내용 비움
