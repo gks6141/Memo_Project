@@ -19,7 +19,7 @@
 			<input type="file" id="file" accept=".jpg, .png, .gif">
 		</div>
 		<div class="d-flex justify-content-between">
-			<button id="deleteBtn" type="button" class="btn btn-secondary">삭제</button>
+			<button id="deleteBtn" type="button" class="btn btn-secondary" th:data-post-id="${post.id}">삭제</button>
 			<div class="d-flex">
 				<a href="/post/post-list-view" class="btn btn-dark">목록</a>
 				<button id="saveBtn" type="button" class="btn btn-warning" th:data-post-id="${post.id}">수정</button>
@@ -60,7 +60,7 @@
 						return;
 					}
 				}
-				console.log(postId)
+				console.log(postId);
 				console.log(subject);
 				console.log(content);
 				console.log(file);
@@ -94,7 +94,31 @@
 						alert("글을 저장하는데 실패했습니다.");
 					}
 				});
+			});
+			
+			$("#deleteBtn").on('click',function(){
+				let postId = $(this).data("post-id");
 				
+				console.log(postId);
+				//AJAX
+				$.ajax({
+					//request
+					method: "delete"
+					, url: "/post/delete"
+					, data: {"postId": postId}
+					//response
+					,success: function(data){
+						if(data.code == 200){
+							alert("메모가 삭제되었습니다.");
+							location.href = "/post/post-list-view";
+						} else {
+							alert(data.error_message);
+						}
+					}
+					,error: function(e){
+						alert("글을 삭제하는데 실패했습니다.");
+					}
+				});
 			});
 		});
     </script>

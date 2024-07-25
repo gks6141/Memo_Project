@@ -59,7 +59,7 @@ public class PostBO {
 		//기존글 가져온다 ( 1. 이미지 교체시 삭제하기 위해  2. 업데이트 대상이 있는지 확인)
 		Post post = postMapper.selectPostByUserIdPostId(userId, postId);
 		//이용자 한명마다 쓰레드를 사용하는데 단체로 사용하게 되면 한명이 사용하면 다른 사람의 사용이 멈춰지면서 느려지는 사이트가 된다.(절대 사용X)
-		System.out.println();
+//		System.out.println();
 		
 		if(post == null) {
 			log.warn("[글 수정] post is null. userId:{}, postId:{}",userId, postId);
@@ -86,4 +86,24 @@ public class PostBO {
 		postMapper.updatePostByPostId(postId, subject, content, imagePath);
 		
 	}
+	
+	//input : userId, postId
+	//output:X
+	public void deletePostByPostId(int userId, int postId) {
+		
+		Post post = postMapper.selectPostByUserIdPostId(userId, postId);
+		
+		if(post == null) {
+			log.warn("[글 수정] post is null. userId:{}, postId:{}",userId, postId);
+			return;
+		}
+		
+		if(post.getImagePath() != null) {
+			fileManagerService.deleteFile(post.getImagePath());
+		}
+		
+		postMapper.deletePostByPostId(userId, postId);
+		
+	}
+	
 }

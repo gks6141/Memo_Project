@@ -16,10 +16,10 @@ import lombok.extern.slf4j.Slf4j;
 public class FileManagerService {
 	
 	//실제 업로드가 된 이미지가 저장될 서버의 경로
-	public static final String FILE_UPLOAD_PATH ="D:\\한주형\\6_spring_project\\memo\\memo_workspace\\images/";
+//	public static final String FILE_UPLOAD_PATH ="D:\\한주형\\6_spring_project\\memo\\memo_workspace\\images/";
 	
 	//집에서 사용되는 경로
-//	public static final String FILE_UPLOAD_PATH ="C:\\한주형2\\6_project\\memo\\workspace\\image/";
+	public static final String FILE_UPLOAD_PATH ="C:\\한주형2\\6_project\\memo\\workspace\\images/";
 	
 	//input: MultipartFile, userLoginId
 	//output: String(이미지 경로)
@@ -88,13 +88,7 @@ public class FileManagerService {
 			}
 			
 		}
-		
-		
-		
-		
 	}
-	
-	
 	
 	
 //	public static final String FILE_UPLOAD_PATH ="D:\\한주형\\6_spring_project\\memo\\memo_workspace\\images";
